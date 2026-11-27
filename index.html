@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang = "ja">
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    <title>Youtube Music風音楽再生アプリ</title>
+    <link rel = "stylesheet" href = "common.css">
+    <link rel = "stylesheet" href = "login.css">
+    <link rel = "stylesheet" href = "playlist.css">
+    <link rel = "stylesheet" href = "song.css">
+    <link rel = "stylesheet" href = "player.css">
+</head>
+<body id = "app-container">
+        <header>
+            <div class = "page-content">
+                <div id = "header-content"><!-- 完成後に「"header-content"」のdiv消す -->
+                    <h1>My Music App</h1>
+
+                    <div id="preview-mode-buttons"><!-- 完成後に消す -->
+                    
+                        <button id = "mobile-view-btn">
+                        📱
+                        </button>
+                        
+                        <button id = "pc-view-btn">
+                        💻
+                        </button>
+                        
+                    </div><!-- ここまで消す -->
+                </div>
+            </div>
+        </header>
+        <main><!-- 通常表示されるもの -->
+            <!-- ログイン画面 -->
+            <section id="login-section">
+                <div class = "page-content">
+                    <button id = "login-btn">
+                        Googleアカウントでログイン
+                    </button>
+                </div>
+            </section>
+
+            <!-- プレイリスト一覧画面 -->
+            <section id="playlist-section">
+                <div class = "page-content">
+                    <div id="playlist-selector">
+                        <button id="playlist-btn">
+                            YouTubeプレイリスト ▼
+                        </button>
+                    </div>
+                    <ul id="playlist-List">
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 曲一覧画面 -->
+            <section id = "song-section">
+                <div class = "page-content">
+                    <button id = "song-back-btn">
+                        ＜
+                    </button>
+                    <h2 id = "playlist-title">
+                        プレイリスト名
+                    </h2>
+                    <hr>
+                    <ul id = "song-list">
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 曲再生画面 -->
+            <section id = "player-section">
+                <div class = "page-content">
+                    <button id = "player-back-btn">
+                        ＜
+                    </button>
+                    <div id = "player-info">
+                        <div id = "player-thumbnail">
+                            ♪
+                        </div>
+                        <h2 id = "player-song-title">
+                            曲名
+                        </h2>
+                        <p id = "player-artist">
+                            アーティスト名
+                        </p>
+                        <div id = "player-progress-container">
+                            <input
+                                type = "range"
+                                id = "progress-bar"
+                                value = "0"
+                                min = "0"
+                                max = "100"
+                            >
+                            <div id = "time-display">
+                                <span id = "current-time">0:00</span>
+                                <span id = "duration">3:52</span>
+                            </div>
+                        </div>
+                        <div id = "player-controls">
+                            <button id = "shuffle-btn">
+                                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 3h5v5"/>
+                                    <path d="M4 20 21 3"/>
+                                    <path d="M21 16v5h-5"/>
+                                    <path d="M15 15l6 6"/>
+                                    <path d="M4 4l5 5"/>
+                                </svg>
+                            </button>
+                            <button id = "prev-song-btn">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+                                    <path d="M6 5v14"/>
+                                    <path d="M19 5.5v13a.8.8 0 0 1-1.2.7L8.5 12.7a.8.8 0 0 1 0-1.4l9.3-6.5A.8.8 0 0 1 19 5.5z"/>
+                                </svg>
+                            </button>
+                            <button id = "play-btn">
+                                ▶
+                            </button>
+                            <button id = "next-song-btn">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+                                    <path d="M18 5v14"/>
+                                    <path d="M5 5.5v13a.8.8 0 0 0 1.2.7l9.3-6.5a.8.8 0 0 0 0-1.4L6.2 4.8A.8.8 0 0 0 5 5.5z"/>
+                                </svg>
+                            </button>
+                            <button id = "repeat-btn">
+                                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 2l4 4-4 4"/>
+                                    <path d="M3 11V9a3 3 0 0 1 3-3h15"/>
+                                    <path d="M7 22l-4-4 4-4"/>
+                                    <path d="M21 13v2a3 3 0 0 1-3 3H3"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id = "youtube-player">
+                </div>
+            </section>
+
+            <!-- ミニプレイヤー -->
+            <section id = "mini-player-section">
+                <div id = "mini-player-progress">
+                    <div id = "mini-player-progress-bar"></div>
+                </div>
+                <div id = "mini-player">
+                    <div id = "mini-player-thumbnail">
+                        ♪
+                    </div>
+                    <div id = "mini-player-info">
+                        <p id = "mini-player-song-title">
+                            曲名
+                        </p>
+                        <p id = "mini-player-artist">
+                            アーティスト名
+                        </p>
+                    </div>
+                    <button id = "mini-player-play-btn">
+                        ⏸
+                    </button>
+                </div>
+            </section>
+        </main>
+        <div id = "sheet-overlay">
+            <div id = "playlist-sheet">
+                <button id = "close-sheet-btn">
+                    ✕
+                </button>
+                <div id = "sheet-content">
+                    <div class = "sheet-item" id = "youtube">
+                        Youtubeプレイリスト
+                    </div>
+                    <div class = "sheet-item" id = "my-playlist">
+                        マイプレイリスト
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script src = "https://accounts.google.com/gsi/client" async defer></script>
+    <script src = "element.js"></script>
+    <script src = "data.js"></script>
+    <script src = "ui.js"></script>
+    <script src = "playlist.js"></script>
+    <script src = "player.js"></script>
+    <script src = "preview.js"></script>
+    <script src = "auth.js"></script>
+    <script src = "main.js"></script>
+    <script src = "https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
