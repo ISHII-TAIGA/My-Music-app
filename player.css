@@ -1,0 +1,250 @@
+/*===============
+// 曲再生画面
+===============*/
+#player-section{
+    display:none;
+}
+
+#player-back-btn {
+    background:none;
+    border:none;
+    color: white;
+    margin-bottom:20px;
+}
+
+/*--- アルバム画像を入れる箱 ------------------------------*/
+#player-thumbnail{
+    width:100%;
+    max-width:340px;
+    margin: auto;
+    aspect-ratio:1/1;
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:80px;
+}
+
+/*--- 実際のアルバム画像 -----------------------------------*/
+.player-thumbnail-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/*--- タイトル --------------------------------------------*/
+#player-song-title{
+    font-size:28px;
+    margin-top:20px;
+}
+
+/*--- アーティスト名 ---------------------------------------*/
+#player-artist{
+    color:#aaa;
+    font-size:18px;
+}
+
+/*--- ボタン関係 -------------------------------------------*/
+#player-controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* 🔀 ⏮ ⏭ 🔁 共通：背景なし、白いアイコンだけ */
+#shuffle-btn,
+#repeat-btn,
+#prev-song-btn,
+#next-song-btn{
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    padding: 8px;
+}
+
+/* シャッフル・リピートボタンの個別デザイン */
+#shuffle-btn,
+#repeat-btn{
+    position: relative;
+}
+
+#shuffle-btn::after,
+#repeat-btn::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    margin-left: -2.5px;
+    border-radius: 50%;
+    backGround: transparent;
+}
+
+/* シャッフルON、プレイリストリピートのときだけドットを出す */
+#shuffle-btn.active::after,
+#repeat-btn[data-mode = "1"]::after{
+    background: white;
+}
+
+/* 1曲リピート：アイコンの中央に「1」を表示 */
+#repeat-btn[data-mode = "2"]::before{
+    content: "1";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+}
+
+/* 再生ボタン */
+#play-btn{
+    width: 72px;
+    height: 72px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    color: black;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*--- シークバーデザイン ------------------------------------*/
+#player-progress-container{
+    margin-top: 20px;
+}
+
+#progress-bar{
+    width: 100%;
+    height: 4px;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    /* 左側（再生済み）が白、右側がグレー。--progress はJSから入れる */
+    background: linear-gradient(
+        to right,
+        white var(--progress, 0%),
+        #4a4a4a var(--progress, 0%)
+    );
+}
+
+/* つまみを非表示（Chrome / Edge / Safari） */
+#progress-bar::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* つまみを非表示（Firefox） */
+#progress-bar::-moz-range-thumb{
+    width: 0;
+    height: 0;
+    border: none;
+    background: transparent;
+}
+
+#time-display{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/*--- youtubeのiframeを生成するための要素 ---------------------*/
+#youtube-player{
+    width:300px;
+    height:200px;
+}
+
+/*--- ミニプレイヤー ----------------------------------------*/
+#mini-player-section{
+    display: none;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+#mini-player{
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background: #222;
+    color: white;
+    padding: 0 12px;
+}
+
+/*--- ミニプレイヤーアルバム画像を入れる箱 --------------------*/
+#mini-player-thumbnail{
+    width: 50px;
+    height: 50px;
+    background: #333;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*--- 実際のアルバム画像 ------------------------------------*/
+.mini-player-thumbnail-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/*--- ミニプレイヤー情報（曲名、アーティスト名） --------------*/
+#mini-player-info{
+    margin-left: 10px;
+}
+
+#mini-player-song-title{
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#mini-player-artist{
+    margin: 0;
+    color: #aaa;
+    font-size: 12px;
+}
+
+/*--- ミニプレイヤー再生ボタン ------------------------------*/
+#mini-player-play-btn{
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+}
+
+/*--- ミニプレイヤーシークバー ------------------------------*/
+#mini-player-progress{
+    width: 100%;
+    height: 3px;
+    background: #444;
+}
+
+#mini-player-progress-bar{
+    width: 0%;
+    height: 100%;
+    background: white;
+}
