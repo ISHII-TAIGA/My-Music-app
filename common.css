@@ -1,0 +1,68 @@
+/*===============
+// 全体共通
+===============*/
+body{
+    margin: 0;
+    padding: 0;
+    background: #121212;
+    color: white;
+    font-family: sans-serif;
+}
+
+header{
+    text-align: left;
+    background: #1e1e1e;
+}
+
+h1{
+    margin: 0;
+}
+
+button{
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/*===============
+// 画面の横余白指定
+===============*/
+:root{
+    --page-padding:20px;
+}
+
+.page-content{
+    padding:var(--page-padding);
+}
+
+
+
+/* ====================================
+開発用：スマホ/PC表示切替
+完成後削除予定
+==================================== */
+#header-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+#mobile-view-btn,
+#pc-view-btn{
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    border-radius: 15px;
+    margin-left: 10px;
+    padding: 0;
+}
+
+.mobile-preview{
+    max-width: 430px;
+    margin: 0 auto;
+    background: #181818;
+    min-height: 100vh;
+    border-left: 2px solid #333;
+    border-right: 2px solid #333;
+}
+/* ---------------------------------- */
