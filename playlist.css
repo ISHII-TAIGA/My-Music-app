@@ -1,0 +1,82 @@
+/*===============
+// プレイリスト画面
+===============*/
+#playlist-section{
+    display:none;
+}
+
+/*--- プレイリスト選択プルアップ -------------------------*/
+#playlist-btn{
+    width:auto;
+    padding: 10px 0;
+    background:none;
+    border:none;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    text-align:left;
+    cursor:pointer;
+}
+
+#playlist-sheet{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #1e1e1e;
+    border-radius:40px 40px 0 0;
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: .3s;
+}
+
+#close-sheet-btn{
+    width:auto;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#sheet-content{
+    padding: 50px 50px 20px 20px; /* 余白でシートの見た目調整 */
+}
+
+#sheet-overlay{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.sheet-item{
+    padding: 20px 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/*--- プレイリスト ----------------------------------------*/
+#playlist-List{
+    padding:0;
+}
+
+#playlist-List li{
+    list-style:none;
+    background:#1e1e1e;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#playlist-List li:hover{
+    background:#2b2b2b;
+}
